@@ -25,17 +25,23 @@ headSelect.addEventListener('change', () => {
 });
 
 middleSelect.addEventListener('change', () => {
+    character.middle = middleSelect.value;
+    displayCharacter();
     // > set the character middle from the value of the middle <select>
     // > redisplay the character
 });
 
 pantsSelect.addEventListener('change', () => {
+    character.pants = pantsSelect.value;
+    displayCharacter();
     // > set the character head from the value of the head <select>
     // > redisplay the character
 });
 
 function displayCharacter() {
     headImage.src = 'assets/character/' + character.head + '-head.png';
+    middleImage.src = 'assets/character/' + character.middle + '-middle.png';
+    pantsImage.src = 'assets/character/' + character.pants + '-pants.png';
     // > set the middle and pants images .src property based on the character middle and pants properties
 }
 
@@ -44,6 +50,9 @@ function displayPhrases() {
     phraseList.innerHTML = '';
 
     for (const phrase of character.phrases) {
+        const li = document.createElement('li');
+        li.textContent = phrase;
+        phraseList.append(li);
         // > create an <li> element
         // > set the text of the li to the phrase
         // > append the <li> to the phrases list
@@ -51,6 +60,9 @@ function displayPhrases() {
 }
 
 addButton.addEventListener('click', () => {
+    const phrase = phraseInput.value;
+    character.phrases.push(phrase);
+    displayCharacter();
     // > Get the phrase from the value of the phrase input
     // > Use ".push" to add the phrase to the end of the character phrases array
     // > Re-display the phrases
