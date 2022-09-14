@@ -53,21 +53,14 @@ function displayPhrases() {
         const li = document.createElement('li');
         li.textContent = phrase;
         phraseList.append(li);
-        // > create an <li> element
-        // > set the text of the li to the phrase
-        // > append the <li> to the phrases list
     }
 }
 
 addButton.addEventListener('click', () => {
     const phrase = phraseInput.value;
     character.phrases.push(phrase);
-    displayCharacter();
-    // > Get the phrase from the value of the phrase input
-    // > Use ".push" to add the phrase to the end of the character phrases array
-    // > Re-display the phrases
+    displayPhrases();
 
-    // reset the input
     phraseInput.value = '';
 });
 
